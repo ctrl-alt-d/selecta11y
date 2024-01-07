@@ -1,0 +1,24 @@
+@import "bootstrap/scss/bootstrap";
+
+// .dropdown.dropdown-menu.dropdown-item with role menuitemcheckbox
+.dropdown-item-content:hover {
+    cursor: pointer;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-item-selector {
+    width: 16px;
+}
+
+.dropdown-item-content {
+    flex-grow: 1;
+}
+
+.items {
+    max-height: 200px;
+    overflow-y: auto;
+}
