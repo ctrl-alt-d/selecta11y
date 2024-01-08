@@ -10,42 +10,52 @@
 
 <body>
 
-    <h1>Hello, world!</h1>
+    <div class="container">
+        <div class="row">
 
-    <div class="input-group mb-3">
-        <label class="form-check-label" for="fake">
-            Pizza name
-        </label>
-        <input type="text" class="form-control" id="fake" placeholder="Pizza name" tabindex="1" /><br>
-    </div>
+            <h1 class="mt-4">Hello, world!</h1>
 
-    <div class="input-group mb-3">
-        <label class="form-check-label" for="dropdownMenuCombo" id="label-dropdownMenuCombo">
-            Ingredients
-        </label>
-
-        <div class="dropdown form-control p-0 border border-0" id="mycustomselectid" aria-labelledby="label-dropdownMenuCombo">
-            <a href="#" class="dropdown-toggle dropdownMenuCombo d-block w-100 form-control" data-bs-toggle="dropdown"
-                data-bs-auto-close="outside" aria-expanded="false" aria-haspopup="menu" role="button" tabindex="9"
-                id="dropdownMenuCombo" aria-controls="dropdownMenu" >
-            </a>
-            <div class="dropdown-menu" id="dropdownMenu">
-                <input class="dropdown-item dropdowninputsearch w-100"
-                    aria-label="Ingredients filter"
-                    type="text" autofocus />
-                <ul class="items p-0" role="menu">
-                </ul>
+            <div class="mb-3">
+                <label class="form-check-label" for="fake">
+                    Pizza name
+                </label>
+                <input type="text" class="form-control" id="fake" placeholder="Pizza name" tabindex="1" />
             </div>
+
+            <div class="mb-3">
+                <label class="form-check-label" for="dropdownMenuCombo" id="label-dropdownMenuCombo">
+                    Ingredients
+                </label>
+
+                <div class="dropdown form-control p-0 border border-0" id="mycustomselectid"
+                    aria-labelledby="label-dropdownMenuCombo">
+                    <a id="dropdownMenuCombo" href="#"
+                        class="dropdown-toggle dropdownMenuCombo d-block w-100 form-control"
+                        data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"
+                        aria-haspopup="menu" role="button" tabindex="9" 
+                        aria-controls="dropdownMenu">
+                    </a>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <input class="dropdown-item dropdowninputsearch w-95 mx-1 border border-2" aria-label="Ingredients filter"
+                            type="text" autofocus />
+                        <ul class="items p-0" role="menu">
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+                <label class="form-check-label" for="fake">
+                    Coocker
+                </label>
+                <input type="text" class="form-control" id="fake2" placeholder="Coocker" />
+            </div>
+
         </div>
-
     </div>
 
-    <div class="input-group mb-3">
-        <label class="form-check-label" for="fake">
-            Cooker
-        </label>
-        <input type="text" class="form-control" id="fake2" placeholder="Coocker" /><br>
-    </div>
+
 
     <script type="module" src="./selecta11y.js"></script>
     <script type="module" src="./index.js"></script>
