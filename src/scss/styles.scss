@@ -1,6 +1,9 @@
 @import "bootstrap/scss/bootstrap";
 
-// .dropdown.dropdown-menu.dropdown-item with role menuitemcheckbox
+a.dropdownMenuCombo {
+    text-decoration: none;
+}
+
 .dropdown-item-content:hover {
     cursor: pointer;
 }

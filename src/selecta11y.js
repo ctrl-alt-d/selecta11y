@@ -289,8 +289,10 @@ class ComboboxAutocomplete {
 
   // Doc: update combo with selected items
   #UpdateCombo() {
-    // Clear combo 
+    // Clear combo. Set a White space if this.data is empty    
     this.dropdownMenuCombo.innerHTML = "";
+    
+    var hasActiveItems = false;
 
     // for each active item
     for (const item of this.data) {
@@ -302,12 +304,20 @@ class ComboboxAutocomplete {
       const active = this.activeItems.includes(value.toString());
       if (!active) continue;
 
+      hasActiveItems = true;
+
       // figure up content    
       const content = this.fAsLabel(item);
 
       // append to combo
       this.dropdownMenuCombo.appendChild(content);
     }
+
+    if (!hasActiveItems)
+      // avoid empty combo to keep height
+      this.dropdownMenuCombo.innerHTML = 
+       "<span>&nbsp;</span>";
+
   }
 
 }
