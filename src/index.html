@@ -20,19 +20,20 @@
     </div>
 
     <div class="input-group mb-3">
-        <label class="form-check-label" for="dropdownMenuCombo">
+        <label class="form-check-label" for="dropdownMenuCombo" id="label-dropdownMenuCombo">
             Ingredients
         </label>
 
         <div class="dropdown form-control" id="mycustomselectid">
             <a href="#" class="dropdown-toggle dropdownMenuCombo d-block w-100" data-bs-toggle="dropdown"
                 data-bs-auto-close="outside" aria-expanded="false" aria-haspopup="menu" role="button" tabindex="9"
-                id="dropdownMenuCombo">
+                id="dropdownMenuCombo" aria-controls="dropdownMenu" aria-labelledby="label-dropdownMenuCombo">
             </a>
             <div class="dropdown-menu" id="dropdownMenu">
-                <input class="dropdown-item dropdowninputsearch w-100" aria-label="Type or choose a user"
-                    aria-autocomplete="list" type="text" />
-                <ul class="items p-0">
+                <input class="dropdown-item dropdowninputsearch w-100"
+                    aria-label="Ingredients filter"
+                    type="text" autofocus />
+                <ul class="items p-0" role="menu">
                 </ul>
             </div>
         </div>
