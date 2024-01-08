@@ -23,16 +23,11 @@ class ComboboxAutocomplete {
 
     this.activeItems = initialSelection.map((item) => item.toString());
 
-    this.searchKeyDownActions = {
+    this.searchKeyActions = {
       GO_FIRST_ITEM: 0,
       CLOSE_DROPDOWN: 1,
-    };
-
-    this.searchKeyUpActions = {
       FILTER: 3
     };
-
-    this.searchKeyActions = Object.assign(this.searchKeyDownActions, this.searchKeyUpActions);
 
     this.itemActions = {
       TOGGLE_SELECT: 0,
@@ -50,6 +45,9 @@ class ComboboxAutocomplete {
   }
 
   // ----------- UiTransformers -----------
+
+  // Doc: get a item from data and returns html to show item in combo
+  // This is the default behavior, but you can override it passing a function to constructor
   #defaultfAsLabel(item) {
     // get content    
     const content = item["text"];
@@ -64,6 +62,8 @@ class ComboboxAutocomplete {
     return span;
   }
 
+  // Doc: get a item from data and returns html to show item in dropdown
+  // This is the default behavior, but you can override it passing a function to constructor
   #defaultfAsOption(item) {
     // get content    
     const content = item["text"];
@@ -74,6 +74,7 @@ class ComboboxAutocomplete {
 
   // ----------- Helpers -----------
 
+  // Doc: when dropdown is opened, move selected items to top
   #MoveSelectedItemsToTop(data) {
     // selected items
     const aactive = data.filter((item) => this.activeItems.includes(item[this.key].toString()));
@@ -87,6 +88,7 @@ class ComboboxAutocomplete {
 
   // ----------- Dropdown events -----------
 
+  // Doc: stuff to do when dropdown is opened
   #initializeDropdownEventListeners() {
     this.dropdownMenuCombo.addEventListener('shown.bs.dropdown', () => {
       this.searchInput.value = "";
@@ -97,6 +99,7 @@ class ComboboxAutocomplete {
 
   // ----------- Search events -----------
 
+  // Doc: stuff to do on search input keydown: go up/down
   #initializeSearchKeyDownEventListeners() {
     this.searchInput.addEventListener('keydown', (e) => {
       const action = this.#searchKeyDown2Action(e);
@@ -105,6 +108,7 @@ class ComboboxAutocomplete {
     });
   }
 
+  // Doc: stuff to do on search input keyup: filter data
   #initializeSearchKeyUpEventListeners() {
     this.searchInput.addEventListener('keyup', (e) => {
       const action = this.#searchKeyUpAction(e);
@@ -113,6 +117,7 @@ class ComboboxAutocomplete {
     });
   }
 
+  // Doc: map search input keydown to action
   #searchKeyDown2Action(e) {
     if (e.key === "ArrowDown") {
       e.preventDefault();
@@ -123,10 +128,12 @@ class ComboboxAutocomplete {
     }
   }
 
+  // Doc: map search input keyup to action
   #searchKeyUpAction(e) {
     return this.searchKeyActions.FILTER;
   }
 
+  // Doc: do actions over search input
   #doSearchAction(action) {
     switch (action) {
       case this.searchKeyActions.GO_FIRST_ITEM:
@@ -148,6 +155,7 @@ class ComboboxAutocomplete {
   }
   // ----------- Item events -----------
 
+  // Doc: stuff to do on item keydown: select / unselect
   #initializeItemEventListeners(item) {
     item.addEventListener('keydown', (e) => {
       const action = this.#itemKeyDown2Action(e);
@@ -164,16 +172,19 @@ class ComboboxAutocomplete {
     });
   }
 
+  // Doc: map spacebar to toggle select
   #itemKeyDown2Action(e) {
     if (e.key === " ") {
       return this.itemActions.TOGGLE_SELECT;
     }
   }
 
+  // Doc: map click to toggle select
   #itemClick2Action(e) {
     return this.itemActions.TOGGLE_SELECT;
   }
 
+  // Doc: do actions over item: select / unselect
   #doItemAction(action, item) {
     switch (action) {
       case this.itemActions.TOGGLE_SELECT:
@@ -193,7 +204,7 @@ class ComboboxAutocomplete {
 
   // ----------- UI Refresh -----------
 
-
+  // Doc: fill dropdown from data creating html elements
   #FillDropdownItems(data) {
 
     const sorteddata = this.#MoveSelectedItemsToTop(data);
@@ -246,6 +257,7 @@ class ComboboxAutocomplete {
     });
   }
 
+  // Doc: clear ui item selection
   #clearUiSelection(item) {
     // icons
     const selectedPre = item.querySelector('.dropdown-item-selector.pre-selector');
@@ -260,6 +272,7 @@ class ComboboxAutocomplete {
     this.#UpdateCombo();
   }
 
+  // Doc: set ui item selection
   #setUiSelection(item) {
     // icons
     const selectedPre = item.querySelector('.dropdown-item-selector.pre-selector');
@@ -274,6 +287,7 @@ class ComboboxAutocomplete {
     this.#UpdateCombo();
   }
 
+  // Doc: update combo with selected items
   #UpdateCombo() {
     // Clear combo 
     this.dropdownMenuCombo.innerHTML = "";
@@ -298,10 +312,7 @@ class ComboboxAutocomplete {
 
 }
 
-//
-//
-//
-//
+// --- invoking combo ---
 
 const control = document.getElementById('mycustomselectid');
 
@@ -317,7 +328,7 @@ const data = [
   { id: 8, text: 'Extra cheese' },
 ];
 
-const initialSelection = [1];
+const initialSelection = [1]; // Chess is selected
 
 new ComboboxAutocomplete(
   control,
